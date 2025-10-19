@@ -1,0 +1,128 @@
+1. create table Employees (
+    EmpID int primary key,
+    name varchar(50),
+    Salary decimal(10,2)
+
+2. -- 1-усул: Битта ёзув қўшиш
+insert into Employees (EmpID, Name, Salary) 
+values (1, 'Sardor Begmatov', 6000.00);
+
+-- 2-усул: Қаторлар бўйича киритиш
+insert into Employees (EmpID, Name, Salary) 
+values (2, 'Bekzod Yuldashev', 5500.00),(3, 'Javlon Saipov', 4500.00);
+
+3. 
+  update Employees
+set Salary = 7000
+where EmpID = 1;
+
+4. 
+  delete from Employees
+where EmpID = 2;  
+
+5.| Команда      | Мақсади                        | Изоҳ                              |
+| ------------ | ------------------------------ | --------------------------------- |
+| **DELETE**   | Ёзувларни шарт асосида ўчиради | Жадвал сақланиб қолади            |
+| **TRUNCATE** | Барча ёзувларни тезда ўчиради  | Жадвал қолади, лекин маълумот йўқ |
+| **DROP**     | Жадвални бутунлай ўчиради      | Структура ҳам йўқолади            |
+
+6. 
+  alter table Employees
+alter column Name varchar (100);  
+
+7. 
+  alter table Employees
+add Department varchar(50);
+
+8. alter table  Employees
+alter column Salary FLOAT;
+
+9. create table Departments (
+    DepartmentID int primary key,
+    DepartmentName varchar(50)
+);
+
+10. truncate table Employees;
+
+11. 
+  -- 1-қадам: вақтинчалик маълумотлар манбаи
+create table TempDept (
+    DeptID int,
+    DeptName varchar(50)
+);
+
+insert into TempDept values
+(1, 'HR'),
+(2, 'IT'),
+(3, 'Finance'),
+(4, 'Marketing'),
+(5, 'Management');
+
+-- 2-қадам: Departments жадвалига кўчириш
+insert into Departments (DepartmentID, DepartmentName)
+select DeptID, DeptName from TempDept;
+
+-- Вақтинчалик жадвални ўчириш
+drop table TempDept;
+
+12. update Employees
+set Department = 'Management'
+where Salary > 5000;
+
+13. truncate table Employees;
+
+14. alter table Employees
+drop column Department;
+
+ EXEC sp_rename 'Employees', 'StaffMembers';
+
+
+DROP TABLE Departments;
+
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    Category VARCHAR(50),
+    Price DECIMAL(10,2),
+    Supplier VARCHAR(50)
+);
+
+
+ALTER TABLE Products
+ADD CONSTRAINT CHK_Price_Positive CHECK (Price > 0);
+
+
+ALTER TABLE Products
+ADD StockQuantity INT DEFAULT 50;
+
+
+EXEC sp_rename 'Products.Category', 'ProductCategory', 'COLUMN';
+
+
+INSERT INTO Products (ProductID, ProductName, ProductCategory, Price, Supplier)
+VALUES
+(1, 'Laptop', 'Electronics', 850.00, 'TechWorld'),
+(2, 'Phone', 'Electronics', 600.00, 'MobileZone'),
+(3, 'Table', 'Furniture', 120.00, 'HomeCraft'),
+(4, 'Chair', 'Furniture', 80.00, 'OfficeLine'),
+(5, 'Notebook', 'Stationery', 5.50, 'PaperPlus');
+
+
+SELECT *
+INTO Products_Backup
+FROM Products;
+
+EXEC sp_rename 'Products', 'Inventory';
+
+
+ALTER TABLE Inventory
+ALTER COLUMN Price FLOAT;
+
+ALTER TABLE Inventory
+ADD ProductCode INT IDENTITY(1000,5);
+
+
+ 
+  
+  
