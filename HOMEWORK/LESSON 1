@@ -1,0 +1,89 @@
+Осон (Easy)
+1. Қуйидаги атамаларга таъриф беринг:
+
+Маълумот (Data):
+Контекстсиз ҳолдаги хом рақамлар, матнлар ёки белгилар. Масалан: 25, “Sardor”, “Тошкент”.
+
+Маълумотлар базаси (Database):
+Электрон кўринишда сақланадиган ва маълумотлар базасини бошқариш тизими орқали фойдаланиладиган маълумотлар мажмуаси.
+
+Реляцион маълумотлар базаси (Relational Database):
+Маълумотлар жадваллар кўринишида сақланадиган ва улар ўзаро калитлар (keys) орқали боғланган бўладиган маълумотлар базаси тури.
+
+Жадвал (Table):
+Маълумотлар базасидаги асосий структура бўлиб, у сатрлар (ёзувлар) ва устунлар (майдонлар)дан иборат. Электрон жадвал (Excel)га ўхшайди.
+
+2. SQL Server’нинг бешта асосий функцияси:
+
+Маълумотларни сақлаш ва излаш (Data Storage and Retrieval):
+Катта ҳажмдаги маълумотлар билан самарали ишлаш учун мураккаб сўровларни қўллаб-қувватлайди.
+
+Хавфсизлик (Security):
+Фойдаланувчи аутентификацияси, шифрлаш ва роллар орқали хавфсизликни таъминлайди.
+
+Захира ва тиклаш (Backup and Restore):
+Маълумотларни захиралаш ва қайта тиклаш имконияти мавжуд.
+
+Юқори ишончлилик (High Availability):
+Always On, Replication ва Clustering каби функциялар орқали доимий ишни таъминлайди.
+
+Интеграция хизматлари (Integration Services):
+Маълумотларни интеграция қилиш (SSIS), ҳисобот яратиш (SSRS) ва таҳлил (SSAS) учун воситаларни ўз ичига олади.
+
+3. SQL Server’даги аутентификация турлари:
+
+Windows Authentication Mode:
+Фойдаланувчиларни Windows ҳисоблари орқали киришни таъминлайди (энг хавфсиз усул).
+
+SQL Server Authentication Mode:
+Фойдаланувчи SQL Server’га махсус логин ва парол орқали киради.
+
+Ўрта (Medium)
+4. SSMS орқали янги база яратиш:
+create database SchoolDB;
+
+5. Students жадвалини яратиш:
+USE SchoolDB;
+
+create table Students (
+    StudentID int primary key,
+    Name varchar(50),
+    Age int
+);
+
+6. SQL Server, SSMS ва SQL ўртасидаги фарқлар:
+Термин	Таъриф
+SQL Server	Microsoft ишлаб чиқарган реляцион маълумотлар базасини бошқариш тизими (RDBMS). Маълумотларни сақлайди ва қайта ишлайди.
+SSMS (SQL Server Management Studio)	SQL Server билан ишлаш учун мўлжалланган график интерфейс (GUI) воситаси. У орқали сўровлар ёзилади, жадваллар яратилади ва сервер бошқарилади.
+SQL (Structured Query Language)	Реляцион маълумотлар базалари билан ишлаш учун ишлатиладиган сўров тили. Маълумотни излаш, қўшиш, янгилаш ва ўчириш учун қўлланилади.
+Қийин (Hard)
+7. SQL буйруқ турлари (командалар):
+Команда тури	Тўлиқ номи	Мақсади	Мисол
+DQL	Data Query Language	Маълумотни сўраш	SELECT * FROM Students;
+DML	Data Manipulation Language	Маълумотни қўшиш, янгилаш, ўчириш	INSERT INTO Students VALUES (1, 'John', 20);
+DDL	Data Definition Language	Жадваллар ёки структураларни яратиш, ўзгартириш, ўчириш	CREATE TABLE Students (...);
+DCL	Data Control Language	Маълумотларга киришни бошқариш	GRANT SELECT ON Students TO User1;
+TCL	Transaction Control Language	Транзакцияларни бошқариш	BEGIN TRANSACTION; COMMIT; ROLLBACK;
+8. Students жадвалига 3 та ёзув қўшиш:
+INSERT INTO Students (StudentID, Name, Age)
+VALUES 
+(1, 'Sardor', 41),
+(2, 'Bekzod', 37),
+(3, 'Javlon', 41);
+
+9. AdventureWorksDW2022.bak файлини тиклаш қадамлари:
+Манба:
+AdventureWorksDW2022.bak (GitHub’dan юклаб олиш)
+Қадамлар:
+.bak файлини юклаб олинг ва маҳаллий дискка сақланг, масалан:
+C:\Backups\AdventureWorksDW2022.bak
+SSMS’ни очинг ва SQL Server’ингизга уланинг.
+Databases бўлимидаги базалар рўйхатидан:
+Right-click → Restore Database...
+Restore Database ойнасида:
+Source бўлимида “Device” танланг → ... (Browse) босинг → Add → .bak файлини танланг.
+OK босинг.
+SQL Server автоматик равишда базанинг номини аниқлайди.
+Files табига кириб, .mdf ва .ldf файл йўллари тўғрилигини текширинг.
+OK босинг — база тикланади.
+Тикланганидан сўнг, AdventureWorksDW2022 базаси Databases рўйхатида пайдо бўлади.
